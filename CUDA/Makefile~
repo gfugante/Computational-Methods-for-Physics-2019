@@ -1,0 +1,20 @@
+LIBS=
+#-lcuda -lm -L/usr/local/cuda/lib/ -lcudart
+OBJS=
+NVCC=nvcc
+
+ECHO=/bin/echo
+
+default: hello.x
+#default: devprop.x
+#default: add.x
+#default: somma_vec.x
+#default: scalar_prod_blocchi.x
+#default: scalar_prod_thread.x
+#default: scalar_prod_full.x
+
+%.x: %.cu
+	$(NVCC) $(OBJS) $(LIBS) $< -o $@
+
+clean:
+	rm -f *.x *.o
